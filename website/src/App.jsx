@@ -9,10 +9,25 @@ import NavBar from "./components/nav";
 import HomePage from "./components/home";
 import { AboutPage, FAQPage } from "./components/about";
 import { ServicesPage, ProjectsPage, Footer } from "./components/services";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 const App = () => {
+  
   return (
     <Router>
       <div className="min-h-screen">
+        <ScrollToTop />
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
